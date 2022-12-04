@@ -42,7 +42,9 @@ internal struct InfinitePagerView<Content: View>: View {
                         .gesture(controller.isLocked ? DragGesture() : nil)
                 }
                 .frame(width: proxy.size.width, height: proxy.size.height)
+                #if !os(macOS)
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                #endif
                 .coordinateSpace(name: "scroll")
             } else {
                 TabView(selection: $controller.position) {
@@ -57,7 +59,9 @@ internal struct InfinitePagerView<Content: View>: View {
                 .rotation3DEffect(flippingAngle, axis: (x: 1, y: 0, z: 0))
                 .rotationEffect(.degrees(90), anchor: .topLeading)
                 .offset(x: proxy.size.width)
+                #if !os(macOS)
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                #endif
                 .coordinateSpace(name: "scroll")
             }
         }

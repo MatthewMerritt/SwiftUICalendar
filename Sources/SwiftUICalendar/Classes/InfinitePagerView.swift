@@ -45,7 +45,7 @@ internal struct InfinitePagerView<Content: View>: View {
                 #if !os(macOS)
                 .tabViewStyle(.page(indexDisplayMode: .never))
                 #else
-                .toolbar(.hidden, for: .automatic)
+                .hidden()
                 #endif
                 .coordinateSpace(name: "scroll")
             } else {
@@ -64,7 +64,7 @@ internal struct InfinitePagerView<Content: View>: View {
                 #if !os(macOS)
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                 #else
-                .toolbar(.hidden, for: .automatic)
+                .hidden()
                 #endif
                 .coordinateSpace(name: "scroll")
             }

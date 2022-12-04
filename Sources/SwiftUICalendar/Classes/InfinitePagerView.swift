@@ -43,7 +43,9 @@ internal struct InfinitePagerView<Content: View>: View {
                 }
                 .frame(width: proxy.size.width, height: proxy.size.height)
                 #if !os(macOS)
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                .tabViewStyle(.page(indexDisplayMode: .never))
+                #else
+                .toolbar(.hidden, for: .automatic)
                 #endif
                 .coordinateSpace(name: "scroll")
             } else {
@@ -61,6 +63,8 @@ internal struct InfinitePagerView<Content: View>: View {
                 .offset(x: proxy.size.width)
                 #if !os(macOS)
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                #else
+                .toolbar(.hidden, for: .automatic)
                 #endif
                 .coordinateSpace(name: "scroll")
             }
